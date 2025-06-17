@@ -1,2 +1,18 @@
-*
-!.gitignore
+/node_modules
+/public/storage
+/storage/*.key
+/vendor
+
+.env
+.phpunit.result.cache
+Homestead.yaml
+Homestead.json
+/.vagrant
+
+/storage
+/bootstrap/cache
+
+# Laravel Telescope
+storage/logs
+.env.backup
+.env.example.backup
