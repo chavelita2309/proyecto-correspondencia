@@ -53,8 +53,7 @@
             "@php artisan key:generate --ansi"
         ],
         "post-install-cmd": [
-            "@php artisan storage:link",
-            "@php artisan config:cache",
+           
             "chmod -R 775 storage bootstrap/cache || true"
         ]
     },
