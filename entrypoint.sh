@@ -8,6 +8,11 @@ mkdir -p storage/logs
 mkdir -p bootstrap/cache
 chmod -R 775 storage bootstrap/cache
 
+# *** NUEVA LÍNEA AÑADIDA AQUÍ ***
+# Otorga permisos de lectura y ejecución a la carpeta de assets compilados
+# Esto es CRUCIAL para que el servidor web de Railway pueda servir los archivos CSS/JS
+chmod -R 755 public/build
+
 # --- Gestión del archivo .env y APP_KEY ---
 if [ ! -f .env ]; then
   cp .env.example .env
