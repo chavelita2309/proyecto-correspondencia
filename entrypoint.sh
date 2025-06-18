@@ -1,4 +1,5 @@
 #!/bin/bash
+chmod +x ./entrypoint.sh
 
 # Asegúrate de que las carpetas existen
 mkdir -p storage/logs
