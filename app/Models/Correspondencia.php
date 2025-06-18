@@ -80,7 +80,7 @@ class Correspondencia extends Model
 
     public function derivaciones()
     {
-        return $this->hasMany(Derivacorrespondencia::class, 'correspondencia_id')->orderBy('created_at', 'asc');
+        return $this->hasMany(DerivaCorrespondencia::class, 'correspondencia_id')->orderBy('created_at', 'asc');
     }
     public function funcionarioActual()
     {

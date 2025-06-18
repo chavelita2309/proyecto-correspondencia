@@ -29,6 +29,6 @@ class Seguimiento extends Model
     }
     public function derivacion()
     {
-        return $this->belongsTo(Derivacorrespondencia::class);
+        return $this->belongsTo(DerivaCorrespondencia::class);
     }
 }
