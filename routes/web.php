@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\CorrespondenciaController;
-use App\Http\Controllers\DerivacorrespondenciaController;
+use App\Http\Controllers\DerivaCorrespondenciaController;
 use App\Models\Derivacorrespondencia;
 use App\Http\Controllers\TramiteController;
 use App\Http\Controllers\ReporteController;

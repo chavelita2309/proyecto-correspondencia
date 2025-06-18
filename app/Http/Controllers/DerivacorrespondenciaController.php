@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Derivacorrespondencia;
+use App\Models\DerivaCorrespondencia;
 use App\Models\Correspondencia;
 use App\Models\Funcionario;
 use App\Models\Seguimiento;

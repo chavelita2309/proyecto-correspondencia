@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Derivacorrespondencia;
+use App\Models\DerivaCorrespondencia;
 use App\Models\Correspondencia;
 use App\Models\Seguimiento;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +20,7 @@ class TramiteController extends Controller
         ->select(DB::raw('MAX(id) as id'))
         ->groupBy('correspondencia_id');
 
-    $tramites = Derivacorrespondencia::with(['funcionario', 'correspondencia'])
+    $tramites = DerivaCorrespondencia::with(['funcionario', 'correspondencia'])
         ->whereIn('id', $subquery)
         ->where('estado', 'recibido')
         ->paginate(20);
@@ -34,7 +34,7 @@ class TramiteController extends Controller
         ->select(DB::raw('MAX(id) as id'))
         ->groupBy('correspondencia_id');
 
-    $tramites = Derivacorrespondencia::with(['funcionario', 'correspondencia'])
+    $tramites = DerivaCorrespondencia::with(['funcionario', 'correspondencia'])
         ->whereIn('id', $subquery)
         ->where('estado', 'en revision')
         ->paginate(20);
@@ -49,7 +49,7 @@ class TramiteController extends Controller
         ->select(DB::raw('MAX(id) as id'))
         ->groupBy('correspondencia_id');
 
-    $tramites = Derivacorrespondencia::with(['funcionario', 'correspondencia'])
+    $tramites = DerivaCorrespondencia::with(['funcionario', 'correspondencia'])
         ->whereIn('id', $subquery)
         ->where('estado', 'concluido')
         ->paginate(20);
@@ -105,7 +105,7 @@ class TramiteController extends Controller
             ->groupBy('correspondencia_id');
 
         // Trámites recibidos
-        $recibidos = Derivacorrespondencia::where('estado', 'recibido')
+        $recibidos = DerivaCorrespondencia::where('estado', 'recibido')
             ->whereHas('funcionario', fn($q) => $q->where('cargo', $cargo))
             ->whereDoesntHave('correspondencia.seguimientos', function ($query) use ($funcionarioId) {
                 $query->where('funcionario_id', $funcionarioId)
@@ -118,7 +118,7 @@ class TramiteController extends Controller
             ->get();
 
         // Trámites pendientes
-        $pendientes = Derivacorrespondencia::where('estado', 'en revision')
+        $pendientes = DerivaCorrespondencia::where('estado', 'en revision')
             ->whereHas('funcionario', fn($q) => $q->where('cargo', $cargo))
             ->whereIn('id', function ($subquery) {
                 $subquery->select(\DB::raw('MAX(id)'))
@@ -131,7 +131,7 @@ class TramiteController extends Controller
 
 
         // Trámites concluidos
-        $concluidos = Derivacorrespondencia::where('estado', 'concluido')
+        $concluidos = DerivaCorrespondencia::where('estado', 'concluido')
             ->whereHas('funcionario', fn($q) => $q->where('cargo', $cargo))
             ->with('correspondencia')
             ->orderBy('fecha', 'desc') //
@@ -185,7 +185,7 @@ class TramiteController extends Controller
             'comentario' => 'nullable|string|max:500',
         ]);
 
-        $derivacion = Derivacorrespondencia::findOrFail($request->derivacion_id);
+        $derivacion = DerivaCorrespondencia::findOrFail($request->derivacion_id);
 
         // Cambiar estado
         $derivacion->estado = $request->accion;
@@ -213,7 +213,7 @@ class TramiteController extends Controller
 
         if ($request->accion === 'derivado') {
             // Crear nueva derivación
-            Derivacorrespondencia::create([
+            DerivaCorrespondencia::create([
                 'fecha' => now(),
                 'prioridad' => $derivacion->prioridad,
                 'estado' => 'en revision',
