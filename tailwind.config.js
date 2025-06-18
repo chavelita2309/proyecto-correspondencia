@@ -12,6 +12,12 @@ export default {
         './resources/js/**/*.js',
     ],
 
+     safelist: [
+        'bg-gray-100', 'bg-white', 'bg-red-200', 'bg-yellow-200',
+        'text-xl', 'text-gray-800', 'font-semibold', 'rounded',
+        'px-4', 'py-2', 'text-center', 'shadow', 'border'
+    ],
+
     theme: {
         extend: {
             fontFamily: {
@@ -22,3 +28,4 @@ export default {
 
     plugins: [forms, typography],
 };
+

@@ -14,48 +14,48 @@ use App\Helpers\FechaHelper;
 
 class TramiteController extends Controller
 {
-   public function recibidos()
-{
-    $subquery = DB::table('derivacorrespondencias')
-        ->select(DB::raw('MAX(id) as id'))
-        ->groupBy('correspondencia_id');
+    public function recibidos()
+    {
+        $subquery = DB::table('derivacorrespondencias')
+            ->select(DB::raw('MAX(id) as id'))
+            ->groupBy('correspondencia_id');
 
-    $tramites = DerivaCorrespondencia::with(['funcionario', 'correspondencia'])
-        ->whereIn('id', $subquery)
-        ->where('estado', 'recibido')
-        ->paginate(20);
+        $tramites = DerivaCorrespondencia::with(['funcionario', 'correspondencia'])
+            ->whereIn('id', $subquery)
+            ->where('estado', 'recibido')
+            ->paginate(20);
 
-    return view('tramites.recibidos', compact('tramites'));
-}
+        return view('tramites.recibidos', compact('tramites'));
+    }
 
-   public function pendientes()
-{
-    $subquery = DB::table('derivacorrespondencias')
-        ->select(DB::raw('MAX(id) as id'))
-        ->groupBy('correspondencia_id');
+    public function pendientes()
+    {
+        $subquery = DB::table('derivacorrespondencias')
+            ->select(DB::raw('MAX(id) as id'))
+            ->groupBy('correspondencia_id');
 
-    $tramites = DerivaCorrespondencia::with(['funcionario', 'correspondencia'])
-        ->whereIn('id', $subquery)
-        ->where('estado', 'en revision')
-        ->paginate(20);
+        $tramites = DerivaCorrespondencia::with(['funcionario', 'correspondencia'])
+            ->whereIn('id', $subquery)
+            ->where('estado', 'en revision')
+            ->paginate(20);
 
-    return view('tramites.pendientes', compact('tramites'));
-}
+        return view('tramites.pendientes', compact('tramites'));
+    }
 
 
     public function despachados()
-{
-    $subquery = DB::table('derivacorrespondencias')
-        ->select(DB::raw('MAX(id) as id'))
-        ->groupBy('correspondencia_id');
+    {
+        $subquery = DB::table('derivacorrespondencias')
+            ->select(DB::raw('MAX(id) as id'))
+            ->groupBy('correspondencia_id');
 
-    $tramites = DerivaCorrespondencia::with(['funcionario', 'correspondencia'])
-        ->whereIn('id', $subquery)
-        ->where('estado', 'concluido')
-        ->paginate(20);
+        $tramites = DerivaCorrespondencia::with(['funcionario', 'correspondencia'])
+            ->whereIn('id', $subquery)
+            ->where('estado', 'concluido')
+            ->paginate(20);
 
-    return view('tramites.despachados', compact('tramites'));
-}
+        return view('tramites.despachados', compact('tramites'));
+    }
 
     public function buscarPorReferenciaForm()
     {
@@ -168,13 +168,7 @@ class TramiteController extends Controller
         ]);
 
 
-//         foreach ($recibidos as $r) {
-//     logger("Correspondencia {$r->correspondencia_id} - Fecha recepción: {$r->fecha_recepcion} - Días hábiles: " . FechaHelper::diasHabilesTranscurridos($r->fecha_recepcion));
-// }
-// foreach ($pendientes as $p) {
-//     logger("Correspondencia {$p->correspondencia_id} - Fecha derivación: {$p->fecha} - Días hábiles: " . FechaHelper::diasHabilesTranscurridos($p->fecha));
-// }
-
+       
     }
 
     public function registrarAccion(Request $request)

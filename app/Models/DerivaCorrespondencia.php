@@ -66,7 +66,7 @@ class DerivaCorrespondencia extends Model
             '2025-07-16',
             '2025-11-02',
             '2025-12-25',
-          
+
         ])->map(fn($fecha) => \Carbon\Carbon::parse($fecha));
 
         $dias = 0;
@@ -81,12 +81,11 @@ class DerivaCorrespondencia extends Model
     }
 
     public function getColorAlertaAttribute()
-{
-    $dias = $this->dias_retencion;
+    {
+        $dias = $this->dias_retencion;
 
-    if ($dias > 7) return 'bg-red-200';
-    if ($dias > 2) return 'bg-yellow-200';
-    return '';
-}
-
+        if ($dias > 7) return 'bg-red-200';
+        if ($dias > 2) return 'bg-yellow-200';
+        return '';
+    }
 }
