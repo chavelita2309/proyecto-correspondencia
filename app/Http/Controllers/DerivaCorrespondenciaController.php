@@ -17,7 +17,7 @@ class DerivaCorrespondenciaController extends Controller
         $correspondencia = Correspondencia::findOrFail($id);
         $funcionarios = Funcionario::all(); // Obtener todos los funcionarios
 
-        return view('derivacion.index', compact('correspondencia', 'funcionarios'));
+        return view('Derivacion.index', compact('correspondencia', 'funcionarios'));
     }
 
     public function store(Request $request, $id)
