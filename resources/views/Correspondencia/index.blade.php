@@ -28,7 +28,7 @@
                         Remitente</th>
                     <th
                         class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                        Fecha de remisión</th>
+                        Fecha de recepción</th>
                     <th
                         class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
                         Documento</th>
