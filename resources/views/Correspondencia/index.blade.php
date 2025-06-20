@@ -86,7 +86,7 @@
                             <span class="inline-block w-1/3 md:hidden font-bold">Documento</span>
 
                             @if (!empty($cor->documento))
-                                <a href="{{ asset('storage/archivos/' . $cor->documento) }}" target="_blank"
+                                <a href="{{ asset('archivos/' . $cor->documento) }}" target="_blank"
                                     class="text-blue-500 hover:underline">
                                     Ver documento
                                 </a>
