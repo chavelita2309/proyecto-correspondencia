@@ -8,7 +8,8 @@
     <div class="py-6">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-6 shadow rounded-lg">
-                <h2 class="text-xl font-semibold leading-tight text-gray-800">Resultados de búsqueda por referencia</h2><br>
+                <h2 class="text-xl font-semibold leading-tight text-gray-800">Resultados de búsqueda por referencia</h2>
+                <br>
                 <table class="w-full table-auto border-collapse">
                     <thead>
                         <tr class="bg-gray-100 text-left">
@@ -19,20 +20,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($correspondencias as $item)
+                        @foreach ($correspondencias as $item)
                             <tr class="border-t">
-                                <td class="p-2">{{ $item->created_at->format('d/m/Y') }}</td>
+                                <td class="p-2">{{ $item->fecha->format('d/m/Y') }}</td>
                                 <td class="p-2">{{ $item->referencia }}</td>
                                 <td class="p-2">
-                                    @if($item->documento)
-                                        <a
-                                href="{{ asset('storage/archivos/' . $item->documento) }}" target="_blank"
-                                class="text-blue-500 hover:underline">
-                                Ver documento
-                            </a>
-
-                                    @else
-                                        <span class="text-gray-500">No disponible</span>
+                                    @if (!empty($item->documento))
+                                        <a href="{{ asset('storage/archivos/' . $item->documento) }}" target="_blank"
+                                            class="text-blue-500 hover:underline">
+                                            Ver documento
+                                        </a>
                                     @endif
                                 </td>
                                 <td class="p-2">{{ $item->codigo }}</td>

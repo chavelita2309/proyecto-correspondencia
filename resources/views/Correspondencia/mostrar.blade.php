@@ -78,11 +78,13 @@
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                         <dt class="text-sm/6 font-medium text-gray-900">Documento adjunto</dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                            {{ $correspondencia->documento }} <a
-                                href="{{ asset('storage/archivos/' . $correspondencia->documento) }}" target="_blank"
-                                class="text-blue-500 hover:underline">
-                                Ver documento
-                            </a></dd>
+                            {{ $correspondencia->documento }} @if (!empty($correspondencia->documento))
+                                <a href="{{ asset('storage/archivos/' . $correspondencia->documento) }}"
+                                    target="_blank" class="text-blue-500 hover:underline">
+                                    Ver documento
+                                </a>
+                            @endif
+                        </dd>
 
                     </div>
 

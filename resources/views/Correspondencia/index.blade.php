@@ -84,13 +84,14 @@
 
                         <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell w-32 truncate">
                             <span class="inline-block w-1/3 md:hidden font-bold">Documento</span>
-                            
-                            <a
-                                href="{{ asset('storage/archivos/' . $cor->documento) }}" target="_blank"
-                                class="text-blue-500 hover:underline">
-                                Ver documento
-                            </a>
-                            
+
+                            @if (!empty($cor->documento))
+                                <a href="{{ asset('storage/archivos/' . $cor->documento) }}" target="_blank"
+                                    class="text-blue-500 hover:underline">
+                                    Ver documento
+                                </a>
+                            @endif
+
                             {{-- <a href="{{ asset('archivos/' . $cor->documento) }}" class="text-blue-600 underline"
                                 target="_blank" rel="noopener noreferrer">
                                 {{ $cor->documento }}
@@ -101,7 +102,7 @@
                             <span class="inline-block w-1/3 md:hidden font-bold">Código</span>
                             {{ $cor->codigo }}
 
-                          {{-- @if ($estado !== 'concluido')
+                            {{-- @if ($estado !== 'concluido')
     @if ($horasRetenidas > 168)
         <span class="absolute top-0 right-1 animate-ping bg-red-500 rounded-full h-3 w-3"></span>
         <span class="absolute top-0 right-1 bg-red-500 rounded-full h-3 w-3"></span>
@@ -115,7 +116,7 @@
 
                         {{-- <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                            <span class="inline-block w-1/3 md:hidden font-bold">Retención</span> --}}
-{{-- @if ($estado === 'concluido')
+                        {{-- @if ($estado === 'concluido')
     Trámite archivado
 @else
     {{ $horasRetenidas }} h
