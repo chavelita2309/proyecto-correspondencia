@@ -79,8 +79,8 @@
                         <dt class="text-sm/6 font-medium text-gray-900">Documento adjunto</dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
                             {{ $correspondencia->documento }} <a
-                                href="{{ asset('archivos/' . $correspondencia->documento) }}" target="_blank"
-                                class="text-blue-600 hover:underline">
+                                href="{{ asset('storage/archivos/' . $correspondencia->documento) }}" target="_blank"
+                                class="text-blue-500 hover:underline">
                                 Ver documento
                             </a></dd>
 

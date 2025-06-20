@@ -59,9 +59,15 @@ class CorrespondenciaController extends Controller
         // Guardar el documento si se subió
         if ($request->hasFile('documento')) {
             $archivo = $request->file('documento');
-            $nombreArchivo = time() . '_' . $archivo->getClientOriginalName();
-            $archivo->move(public_path('archivos'), $nombreArchivo);
-            $correspondencia->documento = $nombreArchivo;
+            // $nombreArchivo = time() . '_' . $archivo->getClientOriginalName();
+            // $archivo->move(public_path('archivos'), $nombreArchivo);
+            // $correspondencia->documento = $nombreArchivo;
+            
+            // Guarda el archivo en storage/app/public/archivos
+            $ruta = $archivo->store('archivos', 'public');
+
+            // Solo guarda el nombre del archivo (sin 'archivos/')
+            $correspondencia->documento = basename($ruta);
         }
 
         $correspondencia->save();
@@ -89,7 +95,7 @@ class CorrespondenciaController extends Controller
     {
         // Buscar la correspondencia por su ID.
 
-       $correspondencia = Correspondencia::findOrFail($id);
+        $correspondencia = Correspondencia::findOrFail($id);
 
 
         // Preparar los datos que se enviarán a la vista Blade.

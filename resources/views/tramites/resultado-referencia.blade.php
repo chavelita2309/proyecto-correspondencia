@@ -25,7 +25,11 @@
                                 <td class="p-2">{{ $item->referencia }}</td>
                                 <td class="p-2">
                                     @if($item->documento)
-                                        <a href="{{ asset('archivos/' . $item->documento) }}" class="text-blue-600 hover:underline" target="_blank">Descargar</a>
+                                        <a
+                                href="{{ asset('storage/archivos/' . $item->documento) }}" target="_blank"
+                                class="text-blue-500 hover:underline">
+                                Ver documento
+                            </a>
 
                                     @else
                                         <span class="text-gray-500">No disponible</span>

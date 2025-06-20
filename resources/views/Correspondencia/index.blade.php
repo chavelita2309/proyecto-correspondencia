@@ -84,10 +84,17 @@
 
                         <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell w-32 truncate">
                             <span class="inline-block w-1/3 md:hidden font-bold">Documento</span>
-                            <a href="{{ asset('archivos/' . $cor->documento) }}" class="text-blue-600 underline"
+                            
+                            <a
+                                href="{{ asset('storage/archivos/' . $cor->documento) }}" target="_blank"
+                                class="text-blue-500 hover:underline">
+                                Ver documento
+                            </a>
+                            
+                            {{-- <a href="{{ asset('archivos/' . $cor->documento) }}" class="text-blue-600 underline"
                                 target="_blank" rel="noopener noreferrer">
                                 {{ $cor->documento }}
-                            </a>
+                            </a> --}}
                         </td>
 
                         <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell relative">
